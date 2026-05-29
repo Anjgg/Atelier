@@ -10,7 +10,7 @@
         public int Age { get; set; }
 
         public int PlayerId { get; set; }
-        public Player Player { get; set; }
+        public Player Player { get; set; } = null!;
 
         public ICollection<PlayerLastResult> LastResults { get; set; } = new List<PlayerLastResult>();
     }

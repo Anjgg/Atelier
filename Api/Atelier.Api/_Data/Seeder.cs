@@ -22,7 +22,7 @@ namespace Atelier.Api._Data
                 {
                     Id = 52,
                     FirstName = "Novak", LastName = "Djokovic",
-                    ShortName = "N.DJO", Sex = "M",
+                    ShortName = "N.DJO", Sex = Sex.Male,
                     Picture = "https://tenisu.latelier.co/resources/Djokovic.png",
                     CountryId = serbia.Id,
                     Data = new PlayerData
@@ -42,7 +42,7 @@ namespace Atelier.Api._Data
                 {
                     Id = 95,
                     FirstName = "Venus", LastName = "Williams",
-                    ShortName = "V.WIL", Sex = "F",
+                    ShortName = "V.WIL", Sex = Sex.Female,
                     Picture = "https://tenisu.latelier.co/resources/Venus.webp",
                     CountryId = usa.Id,
                     Data = new PlayerData
@@ -62,7 +62,7 @@ namespace Atelier.Api._Data
                 {
                     Id = 65,
                     FirstName = "Stan", LastName = "Wawrinka",
-                    ShortName = "S.WAW", Sex = "M",
+                    ShortName = "S.WAW", Sex = Sex.Male,
                     Picture = "https://tenisu.latelier.co/resources/Wawrinka.png",
                     CountryId = sui.Id,
                     Data = new PlayerData
@@ -82,7 +82,7 @@ namespace Atelier.Api._Data
                 {
                     Id = 102,
                     FirstName = "Serena", LastName = "Williams",
-                    ShortName = "S.WIL", Sex = "F",
+                    ShortName = "S.WIL", Sex = Sex.Female,
                     Picture = "https://tenisu.latelier.co/resources/Serena.png",
                     CountryId = usa.Id,
                     Data = new PlayerData
@@ -102,7 +102,7 @@ namespace Atelier.Api._Data
                 {
                     Id = 17,
                     FirstName = "Rafael", LastName = "Nadal",
-                    ShortName = "R.NAD", Sex = "M",
+                    ShortName = "R.NAD", Sex = Sex.Male,
                     Picture = "https://tenisu.latelier.co/resources/Nadal.png",
                     CountryId = esp.Id,
                     Data = new PlayerData

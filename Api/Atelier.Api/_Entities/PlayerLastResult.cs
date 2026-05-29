@@ -7,6 +7,6 @@
         public bool Result { get; set; }
 
         public int PlayerDataId { get; set; }
-        public PlayerData PlayerData { get; set; }
+        public PlayerData PlayerData { get; set; } = null!;
     }
 }

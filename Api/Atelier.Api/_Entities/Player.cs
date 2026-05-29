@@ -6,12 +6,12 @@
         public string FirstName { get; set; } = string.Empty;
         public string LastName { get; set; } = string.Empty;
         public string ShortName { get; set; } = string.Empty;
-        public string Sex { get; set; } = string.Empty;
+        public Sex Sex { get; set; }
         public string Picture { get; set; } = string.Empty;
 
         public int CountryId { get; set; }
-        public Country Country { get; set; }
+        public Country Country { get; set; } = null!;
 
-        public PlayerData Data { get; set; }
+        public PlayerData Data { get; set; } = null!;
     }
 }

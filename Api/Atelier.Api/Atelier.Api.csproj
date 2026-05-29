@@ -6,7 +6,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
-    <Folder Include="_DTOs\" />
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
