@@ -7,7 +7,9 @@
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="_DTOs\" />
-    <Folder Include="_Data\" />
     <Folder Include="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.8" />
   </ItemGroup>
 </Project>
