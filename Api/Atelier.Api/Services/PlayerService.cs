@@ -10,6 +10,7 @@ namespace Atelier.Api.Services
     {
         Task<GetAllPlayersDto> GetAllPlayersAsync();
         Task<PlayerDto?> GetPlayerByIdAsync(int id);
+        Task<PlayerDto> CreatePlayerAsync(CreatePlayerDto dto);
     }
 
     public class PlayerService : IPlayerService
@@ -59,6 +60,48 @@ namespace Atelier.Api.Services
                 .ThenInclude(p => p.LastResults)
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (player == null) return null;
+            return _helper.MapToPlayerDto(player);
+        }
+
+        public async Task<PlayerDto> CreatePlayerAsync(CreatePlayerDto dto)
+        {
+            if (dto.Data.Last.Any(r => r != 0 && r != 1))
+                throw new ArgumentException("Les résultats doivent être 0 ou 1");
+
+            var country = await _context.Countries
+                .FirstOrDefaultAsync(c => c.Code == dto.CountryCode);
+
+            if (country == null)
+                country = new Country { Code = dto.CountryCode, Picture = string.Empty };
+
+            var player = new Player
+            {
+                FirstName = dto.FirstName,
+                LastName = dto.LastName,
+                ShortName = $"{dto.FirstName.Substring(0, 1).ToUpper()}.{dto.LastName.Substring(0, 3).ToUpper()}",
+                Sex = dto.Sex == "M" ? Sex.Male : Sex.Female,
+                Picture = dto.Picture,
+                Country = country,
+                Data = new PlayerData
+                {
+                    Rank = dto.Data.Rank,
+                    Points = dto.Data.Points,
+                    Weight = dto.Data.Weight,
+                    Height = dto.Data.Height,
+                    Age = dto.Data.Age,
+                    LastResults = dto.Data.Last
+                        .Select((result, index) => new PlayerLastResult
+                        {
+                            Order = index,
+                            Result = result == 1
+                        })
+                        .ToList()
+                }
+            };
+
+            _context.Players.Add(player);
+            await _context.SaveChangesAsync();
+
             return _helper.MapToPlayerDto(player);
         }
     }
