@@ -17,7 +17,7 @@ namespace Atelier.Api.Helpers
                 Id = p.Id,
                 FirstName = p.FirstName,
                 LastName = p.LastName,
-                ShortName = $"{p.FirstName.Substring(0, 1).ToUpper()}.{p.LastName.Substring(0, 3).ToUpper()}",
+                ShortName = $"{p.FirstName[..1].ToUpper()}.{p.LastName[..Math.Min(3, p.LastName.Length)].ToUpper()}",
                 Sex = p.Sex == Sex.Male ? "M" : "F",
                 Country = new CountryDto
                 {
