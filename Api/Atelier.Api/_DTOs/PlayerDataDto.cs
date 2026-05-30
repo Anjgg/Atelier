@@ -8,6 +8,6 @@
         public int Height { get; set; }
         public int Age { get; set; }
 
-        public List<bool> Last { get; set; } = new List<bool>();
+        public List<int> Last { get; set; } = new List<int>();
     }
 }
