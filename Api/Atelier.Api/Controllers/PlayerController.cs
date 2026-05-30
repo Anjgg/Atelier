@@ -46,5 +46,30 @@ namespace Atelier.Api.Controllers
             }
             return Ok(player);
         }
+
+        [HttpPost]
+        [SwaggerDocumentation(
+            summary: "Add a new player",
+            description: "Creates a new player with their statistics. Requires authentication."
+        )]
+        [ProducesResponseType(typeof(PlayerDto), StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status403Forbidden)]
+        public async Task<IActionResult> CreatePlayer([FromBody] CreatePlayerDto dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            try
+            {
+                var player = await _playerService.CreatePlayerAsync(dto);
+                return CreatedAtAction(nameof(GetPlayerById), new { id = player.Id }, player);
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
