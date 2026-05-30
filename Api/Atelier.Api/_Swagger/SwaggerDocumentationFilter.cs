@@ -9,11 +9,11 @@ namespace Atelier.Api._Swagger
         {
             { 200, "Request processed successfully" },
             { 201, "Resource created successfully" },
-            { 400, "Invalid request parameters" },
-            { 401, "Unauthenticated" },
-            { 403, "Unauthorized" },
-            { 404, "Resource not found" },
-            { 500, "Internal server error" }
+            { 400, "Bad Request" },
+            { 401, "Unauthorized" },
+            { 403, "Forbidden" },
+            { 404, "Not Found" },
+            { 500, "Internal Server Error" }
         };
 
         public void Apply(OpenApiOperation operation, OperationFilterContext context)
@@ -27,7 +27,7 @@ namespace Atelier.Api._Swagger
             operation.Summary = attribute.Summary;
             operation.Description = attribute.Description;
 
-            foreach (var response in operation.Responses)
+            foreach (var response in operation.Responses!)
             {
                 if (int.TryParse(response.Key, out int code) &&
                     DefaultDescriptions.TryGetValue(code, out string? description))

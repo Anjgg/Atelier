@@ -1,4 +1,5 @@
 ﻿using Atelier.Api._Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace Atelier.Api._Data
 {
@@ -6,6 +7,27 @@ namespace Atelier.Api._Data
     {
         public static void Seed(AppDbContext context)
         {
+            if (!context.Users.Any())
+            {
+                var hasher = new PasswordHasher<User>();
+                var admin = new User
+                {
+                    Username = "admin",
+                    Role = "Admin"
+                };
+                admin.PasswordHash = hasher.HashPassword(admin, "admin123!");
+                context.Users.Add(admin);
+
+                var user = new User
+                {
+                    Username = "user",
+                    Role = "User"
+                };
+                user.PasswordHash = hasher.HashPassword(user, "user123!");
+                context.Users.Add(user);
+                context.SaveChanges();
+            }
+
             if (context.Players.Any()) return; // déjà seedé
 
             var serbia = new Country { Code = "SRB", Picture = "https://tenisu.latelier.co/resources/Serbie.png" };

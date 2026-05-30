@@ -1,6 +1,7 @@
 ﻿using Atelier.Api._Data;
 using Atelier.Api._DTOs;
 using Atelier.Api._Entities;
+using Atelier.Api._Exception;
 using Atelier.Api.Helpers;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,7 +10,7 @@ namespace Atelier.Api.Services
     public interface IPlayerService
     {
         Task<GetAllPlayersDto> GetAllPlayersAsync();
-        Task<PlayerDto?> GetPlayerByIdAsync(int id);
+        Task<PlayerDto> GetPlayerByIdAsync(int id);
         Task<PlayerDto> CreatePlayerAsync(CreatePlayerDto dto);
     }
 
@@ -30,6 +31,11 @@ namespace Atelier.Api.Services
                 .Include(p => p.Data)
                 .OrderBy(p => p.Data.Rank)
                 .ToListAsync();
+
+            if (players.Count == 0 || players == null)
+            {
+                throw new NoDataException("No data has been retrieved");
+            }
 
             return new GetAllPlayersDto
             {
@@ -52,22 +58,20 @@ namespace Atelier.Api.Services
             };
         }
 
-        public async Task<PlayerDto?> GetPlayerByIdAsync(int id)
+        public async Task<PlayerDto> GetPlayerByIdAsync(int id)
         {
             var player = await _context.Players
                 .Include(p => p.Country)
                 .Include(p => p.Data)
                 .ThenInclude(p => p.LastResults)
-                .FirstOrDefaultAsync(p => p.Id == id);
-            if (player == null) return null;
+                .FirstOrDefaultAsync(p => p.Id == id)
+                ?? throw new KeyNotFoundException();
+
             return _helper.MapToPlayerDto(player);
         }
 
         public async Task<PlayerDto> CreatePlayerAsync(CreatePlayerDto dto)
         {
-            if (dto.Data.Last.Any(r => r != 0 && r != 1))
-                throw new ArgumentException("Les résultats doivent être 0 ou 1");
-
             var country = await _context.Countries
                 .FirstOrDefaultAsync(c => c.Code == dto.CountryCode);
 

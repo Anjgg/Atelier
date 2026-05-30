@@ -12,11 +12,10 @@ namespace Atelier.Api._DTOs
         [MaxLength(50, ErrorMessage = "Last name cannot exceed 50 characters")]
         public string LastName { get; set; } = string.Empty;
 
-        [Required(ErrorMessage = "Gender is required")]
-        [RegularExpression("^[MF]$", ErrorMessage = "Gender must be 'M' or 'F'")]
+        [Required(ErrorMessage = "Sex is required")]
+        [RegularExpression("^[MF]$", ErrorMessage = "Sex must be 'M' or 'F'")]
         public string Sex { get; set; } = string.Empty;
-
-
+        
         public string Picture { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Country code is required")]

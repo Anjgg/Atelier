@@ -1,6 +1,6 @@
 ﻿using Atelier.Api._Data;
 using Atelier.Api._DTOs;
-using Atelier.Api._Entities;
+using Atelier.Api._Exception;
 using Atelier.Api.Calculator;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,9 +30,10 @@ namespace Atelier.Api.Services
                 .Include(p => p.Data)
                 .ThenInclude(p => p.LastResults)
                 .ToListAsync();
+
             if (players == null || players.Count == 0)
             {
-                return null;
+                throw new NoDataException("No data has been retrieved");
             }
 
             return new StatsDto

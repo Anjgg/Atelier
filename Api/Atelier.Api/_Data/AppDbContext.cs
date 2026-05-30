@@ -11,6 +11,7 @@ namespace Atelier.Api._Data
         public DbSet<Country> Countries { get; set; }
         public DbSet<PlayerData> PlayerData { get; set; }
         public DbSet<PlayerLastResult> PlayerLastResults { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
