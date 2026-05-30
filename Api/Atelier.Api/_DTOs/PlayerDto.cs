@@ -12,15 +12,5 @@
         public CountryDto Country { get; set; } = new CountryDto();
 
         public PlayerDataDto Data { get; set; } = new PlayerDataDto();
-
-        public void GetShortName()
-        {
-            if (!string.IsNullOrEmpty(FirstName) && !string.IsNullOrEmpty(LastName))
-            {
-                ShortName = $"{FirstName.Substring(0,1).ToUpper()}.{LastName.Substring(0,3).ToUpper()}";
-            }
-        }
-
-
     }
 }
