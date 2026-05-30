@@ -1,6 +1,7 @@
 ﻿using Atelier.Api._Data;
 using Atelier.Api._DTOs;
 using Atelier.Api._Entities;
+using Atelier.Api.Helpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace Atelier.Api.Services
@@ -14,10 +15,12 @@ namespace Atelier.Api.Services
     public class PlayerService : IPlayerService
     {
         private readonly AppDbContext _context;
+        private readonly IPlayerHelper _helper;
 
-        public PlayerService(AppDbContext context)
+        public PlayerService(AppDbContext context, IPlayerHelper helper)
         {
             _context = context;
+            _helper = helper;
         }
 
         public async Task<GetAllPlayersDto> GetAllPlayersAsync()
@@ -56,37 +59,7 @@ namespace Atelier.Api.Services
                 .ThenInclude(p => p.LastResults)
                 .FirstOrDefaultAsync(p => p.Id == id);
             if (player == null) return null;
-            return MapToPlayerDto(player);
-        }
-
-        private PlayerDto MapToPlayerDto(Player p)
-        {
-            return new PlayerDto
-            {
-                Id = p.Id,
-                FirstName = p.FirstName,
-                LastName = p.LastName,
-                ShortName = $"{p.FirstName.Substring(0, 1).ToUpper()}.{p.LastName.Substring(0, 3).ToUpper()}",
-                Sex = p.Sex == Sex.Male ? "M" : "F",
-                Country = new CountryDto
-                {
-                    Code = p.Country.Code,
-                    Picture = p.Country.Picture
-                },
-                Picture = p.Picture,
-                Data = new PlayerDataDto
-                {
-                    Rank = p.Data.Rank,
-                    Points = p.Data.Points,
-                    Weight = p.Data.Weight,
-                    Height = p.Data.Height,
-                    Age = p.Data.Age,
-                    Last = p.Data.LastResults
-                                .OrderBy(r => r.Order)
-                                .Select(r => r.Result ? 1 : 0)
-                                .ToList()
-                }
-            };
+            return _helper.MapToPlayerDto(player);
         }
     }
 }
