@@ -32,7 +32,7 @@ namespace Atelier.Api.Services
                 .OrderBy(p => p.Data.Rank)
                 .ToListAsync();
 
-            if (players.Count == 0 || players == null)
+            if (players == null || players.Count == 0)
             {
                 throw new NoDataException("No data has been retrieved");
             }
@@ -82,7 +82,6 @@ namespace Atelier.Api.Services
             {
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
-                ShortName = $"{dto.FirstName.Substring(0, 1).ToUpper()}.{dto.LastName.Substring(0, 3).ToUpper()}",
                 Sex = dto.Sex == "M" ? Sex.Male : Sex.Female,
                 Picture = dto.Picture,
                 Country = country,
