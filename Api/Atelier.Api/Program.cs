@@ -1,5 +1,7 @@
 using Atelier.Api._Data;
 using Atelier.Api._Swagger;
+using Atelier.Api.Calculator;
+using Atelier.Api.Helpers;
 using Atelier.Api.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +11,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=Tennis.db"));
 
 builder.Services.AddScoped<IPlayerService, PlayerService>();
+builder.Services.AddScoped<IPlayerHelper, PlayerHelper>();
+builder.Services.AddScoped<IStatsService, StatsService>();
+builder.Services.AddScoped<IStatsCalculator, StatsCalculator>();
 builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
