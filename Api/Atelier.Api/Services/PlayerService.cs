@@ -83,7 +83,7 @@ namespace Atelier.Api.Services
                 FirstName = dto.FirstName,
                 LastName = dto.LastName,
                 Sex = dto.Sex == "M" ? Sex.Male : Sex.Female,
-                Picture = dto.Picture,
+                Picture = dto.Picture ?? string.Empty,
                 Country = country,
                 Data = new PlayerData
                 {

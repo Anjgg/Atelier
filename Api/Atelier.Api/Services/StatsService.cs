@@ -8,7 +8,7 @@ namespace Atelier.Api.Services
 {
     public interface IStatsService
     {
-        Task<StatsDto?> GetStatsAsync();
+        Task<StatsDto> GetStatsAsync();
     }
 
     public class StatsService : IStatsService
@@ -23,7 +23,7 @@ namespace Atelier.Api.Services
             _calculator = calculator;
         }
 
-        public async Task<StatsDto?> GetStatsAsync()
+        public async Task<StatsDto> GetStatsAsync()
         {
             var players = await _context.Players
                 .Include(p => p.Country)
