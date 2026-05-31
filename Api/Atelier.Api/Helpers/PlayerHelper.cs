@@ -22,7 +22,7 @@ namespace Atelier.Api.Helpers
                 Country = new CountryDto
                 {
                     Code = p.Country.Code,
-                    Picture = p.Country.Picture
+                    Picture = p.Country.Picture ?? string.Empty
                 },
                 Picture = p.Picture,
                 Data = new PlayerDataDto

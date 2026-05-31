@@ -15,8 +15,8 @@ namespace Atelier.Api._DTOs
         [Required(ErrorMessage = "Sex is required")]
         [RegularExpression("^[MF]$", ErrorMessage = "Sex must be 'M' or 'F'")]
         public string Sex { get; set; } = string.Empty;
-        
-        public string Picture { get; set; } = string.Empty;
+
+        public string? Picture { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "Country code is required")]
         [StringLength(3, MinimumLength = 3, ErrorMessage = "Country code must be 3 characters long")]

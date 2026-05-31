@@ -43,8 +43,7 @@ namespace Atelier.Api._Data
                 new Player
                 {
                     Id = 52,
-                    FirstName = "Novak", LastName = "Djokovic",
-                    ShortName = "N.DJO", Sex = Sex.Male,
+                    FirstName = "Novak", LastName = "Djokovic", Sex = Sex.Male,
                     Picture = "https://tenisu.latelier.co/resources/Djokovic.png",
                     CountryId = serbia.Id,
                     Data = new PlayerData
@@ -63,8 +62,7 @@ namespace Atelier.Api._Data
                 new Player
                 {
                     Id = 95,
-                    FirstName = "Venus", LastName = "Williams",
-                    ShortName = "V.WIL", Sex = Sex.Female,
+                    FirstName = "Venus", LastName = "Williams", Sex = Sex.Female,
                     Picture = "https://tenisu.latelier.co/resources/Venus.webp",
                     CountryId = usa.Id,
                     Data = new PlayerData
@@ -83,8 +81,7 @@ namespace Atelier.Api._Data
                 new Player
                 {
                     Id = 65,
-                    FirstName = "Stan", LastName = "Wawrinka",
-                    ShortName = "S.WAW", Sex = Sex.Male,
+                    FirstName = "Stan", LastName = "Wawrinka", Sex = Sex.Male,
                     Picture = "https://tenisu.latelier.co/resources/Wawrinka.png",
                     CountryId = sui.Id,
                     Data = new PlayerData
@@ -103,8 +100,7 @@ namespace Atelier.Api._Data
                 new Player
                 {
                     Id = 102,
-                    FirstName = "Serena", LastName = "Williams",
-                    ShortName = "S.WIL", Sex = Sex.Female,
+                    FirstName = "Serena", LastName = "Williams", Sex = Sex.Female,
                     Picture = "https://tenisu.latelier.co/resources/Serena.png",
                     CountryId = usa.Id,
                     Data = new PlayerData
@@ -123,8 +119,7 @@ namespace Atelier.Api._Data
                 new Player
                 {
                     Id = 17,
-                    FirstName = "Rafael", LastName = "Nadal",
-                    ShortName = "R.NAD", Sex = Sex.Male,
+                    FirstName = "Rafael", LastName = "Nadal", Sex = Sex.Male,
                     Picture = "https://tenisu.latelier.co/resources/Nadal.png",
                     CountryId = esp.Id,
                     Data = new PlayerData
