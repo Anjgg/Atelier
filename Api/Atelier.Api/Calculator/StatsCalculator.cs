@@ -5,13 +5,13 @@ namespace Atelier.Api.Calculator
 {
     public interface IStatsCalculator
     {
-        string GetBestCountry(List<Player> players);
-        double GetAverageBmi(List<Player> players);
-        double GetMedianHeight(List<Player> players);
+        Task<string> GetBestCountryAsync(List<Player> players);
+        Task<double> GetAverageBmiAsync(List<Player> players);
+        Task<double> GetMedianHeightAsync(List<Player> players);
     }
     public class StatsCalculator : IStatsCalculator
     {
-        public string GetBestCountry(List<Player> players)
+        public async Task<string> GetBestCountryAsync(List<Player> players)
         {
             try
             {
@@ -33,7 +33,7 @@ namespace Atelier.Api.Calculator
             }
         }
 
-        public double GetAverageBmi(List<Player> players)
+        public async Task<double> GetAverageBmiAsync(List<Player> players)
         {
             try
             {
@@ -50,7 +50,7 @@ namespace Atelier.Api.Calculator
             }
         }
 
-        public double GetMedianHeight(List<Player> players)
+        public async Task<double> GetMedianHeightAsync(List<Player> players)
         {
             try
             {

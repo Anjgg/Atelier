@@ -38,9 +38,9 @@ namespace Atelier.Api.Services
 
             return new StatsDto
             {
-                BestCountry = _calculator.GetBestCountry(players),
-                AverageBmi = _calculator.GetAverageBmi(players),
-                MedianHeight = _calculator.GetMedianHeight(players)
+                BestCountry = await _calculator.GetBestCountryAsync(players),
+                AverageBmi = await _calculator.GetAverageBmiAsync(players),
+                MedianHeight = await _calculator.GetMedianHeightAsync(players)
             };
         }
     }
