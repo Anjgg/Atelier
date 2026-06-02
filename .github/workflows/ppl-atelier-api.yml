@@ -48,6 +48,7 @@ jobs:
           registryUrl: ${{ secrets.ACR_LOGIN_SERVER }}
           registryUsername: ${{ secrets.ACR_USERNAME }}
           registryPassword: ${{ secrets.ACR_PASSWORD }}
+          targetPort: 8080
           environmentVariables: |
             Jwt__Key=${{ secrets.JWT_KEY }}
             Jwt__Issuer=AtelierIssuer
