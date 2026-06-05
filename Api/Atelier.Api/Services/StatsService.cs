@@ -1,6 +1,6 @@
 ﻿using Atelier.Api._Data;
 using Atelier.Api._DTOs;
-using Atelier.Api._Exception;
+using Atelier.Api._Exceptions;
 using Atelier.Api.Calculator;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,4 +1,4 @@
-﻿namespace Atelier.Api._Exception
+﻿namespace Atelier.Api._Exceptions
 {
     public class StatsCalculatorException : Exception
     {

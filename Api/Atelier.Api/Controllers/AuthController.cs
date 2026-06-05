@@ -31,7 +31,7 @@ namespace Atelier.Api.Controllers
             var result = await _authService.LoginAsync(dto);
 
             if (result == null)
-                return Unauthorized(new ResponseType401Dto ("Missing or invalid token"));
+                return Unauthorized(new ResponseType401Dto ("Invalid credentials"));
 
             return Ok(new LoginResponseDto
             {
