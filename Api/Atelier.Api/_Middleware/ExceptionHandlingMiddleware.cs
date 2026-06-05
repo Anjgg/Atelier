@@ -1,5 +1,5 @@
 ﻿using Atelier.Api._DTOs;
-using Atelier.Api._Exception;
+using Atelier.Api._Exceptions;
 
 namespace Atelier.Api._Middleware
 {
